@@ -46,11 +46,11 @@ jobs:
         run: heroku container:push -a ${{ secrets.HEROKU_APP_NAME }} web
           
     Deploy:
-    needs: Build
-    runs-on: ubuntu-latest
+      needs: Build
+      runs-on: ubuntu-latest
 
-    steps:
-      - name: Deploy Heroku
-        env:
-          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-        run: heroku container:release -a ${{ secrets.HEROKU_APP_NAME }} web
+      steps:
+        - name: Deploy Heroku
+          env:
+            HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+          run: heroku container:release -a ${{ secrets.HEROKU_APP_NAME }} web
